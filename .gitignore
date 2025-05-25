@@ -1,0 +1,41 @@
+# Node.js dependencies
+node_modules/
+.next/
+dist/
+out/
+.vscode-test/
+
+# Python virtual environment
+backend/env/
+backend/env/*
+
+# Logs and temp files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.tsbuildinfo
+*.log
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+next-env.d.ts
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.idea/
+*.iml
+
+# Build artifacts
+*.map
+*.lock
+
+# VS Code extension packaging
+*.vsix
