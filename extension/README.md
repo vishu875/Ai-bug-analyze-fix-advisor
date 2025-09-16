@@ -74,12 +74,3 @@ git clone https://github.com/VasantatiChitraksh/BugFixerAI.git
     ```
     Press F5 to run extension
 ---
-
-## Contributors
-
-- Chitraksh Vasantati
-- Sri Nithish Goud Suragouni
-- Sai Akhil Vangimalla
-- Anirudh Reddy Jakka
-- Sri Saya Sandeep Karri
-- Sathvik Pilyanam 
