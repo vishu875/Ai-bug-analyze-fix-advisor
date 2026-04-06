@@ -117,12 +117,3 @@ BugFixerAI has already demonstrated the feasibility and advantages of combining 
 - **Interactive User Control**: Enables developers to accept, reject, or modify suggested patches
 - **Modular Architecture**: Containerized design supporting multiple programming languages
 
-
-## Contributors
-
-- Chitraksh Vasantati
-- Sri Nithish Goud Suragouni
-- Sai Akhil Vangimalla
-- Anirudh Reddy Jakka
-- Sri Saya Sandeep Karri
-- Sathvik Pilyanam 
