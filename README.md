@@ -1,119 +1,196 @@
-# BugFixerAI
-
-BugFixerAI is an innovative tool that leverages Large Language Models (LLMs) to identify and fix bugs in code across multiple programming languages. The project consists of two main components:
-
-- **Web-based Interface:**  
-  Provides an interactive environment to compile, analyze, and debug code.  
-- **VSCode Extension:**  
-  Automatically detects and repairs runtime bugs (e.g., path errors, segmentation faults, logical flaws) using LLM-based insights.
-
-The primary goal of BugFixerAI is to offer a seamless debugging experience, enabling both manual and automatic code repair with high precision.
-
----
-
-## Features 
-
-### Website
-
-- **Multilingual Online Compiler:**  
-  Write, execute, and test code in multiple languages directly from the browser with fast, reliable output—ideal for hands-on learning and prototyping.
-
-- **Intelligent Code Analyser:**  
-  Interprets code logic to detect potential issues such as logical errors, bad practices, or edge cases before they become bugs, while explaining the reasons behind these issues.
-
-- **Interactive Debugger (LLM-Powered):**  
-  Connects to a local LLM-based API, acting as an intelligent code companion that helps users fix bugs and explore alternative implementations.
-
-
-### VSCode Extension
-
-- **On-the-Fly Static Code Analysis:**  
-  Integrates directly into VSCode to automatically analyze the active file, highlighting inefficiencies, bad practices, and hidden bugs without switching contexts.
-
-- **Context-Aware File Detection:**  
-  Automatically recognizes and analyses the open file based on its language and structure, providing dynamic insights and intelligent suggestions.
+<div align="center">
+  <h1>🐛 BugFixerAI</h1>
+  <h3><i>Automated Program Repair Powered by LLMs</i></h3>
+  <br />
+  <p>
+    <b>BugFixerAI</b> is an advanced platform designed to detect and fix common backend bugs with minimal manual intervention. By combining rigorous static code analysis with Large Language Models (LLMs), it acts as your intelligent development sidekick—enhancing software reliability by identifying and correcting syntax, configuration, API, and database-related errors on the fly.
+  </p>
+  <br />
+  <p>
+    <a href="#-web-based-interface-nextjs--python-backend"><strong>Explore Web Platform</strong></a> ·
+    <a href="#-vs-code-extension-nodejs-workspace"><strong>Explore VS Code Extension</strong></a> ·
+    <a href="#-getting-started-replication-manual"><strong>Getting Started</strong></a>
+  </p>
+</div>
 
 ---
 
-## File Structure
+## ✨ Key Features
 
+### 🌐 Web-based Interface (Next.js + Python Backend)
+- **Multilingual Online Compiler:** Write, execute, and test your code securely from any browser.
+- **Intelligent Code Analyzer:** Detects logical flaws, anti-patterns, and unhandled edge cases preemptively.
+- **Interactive LLM Debugger:** Guides you through fixes, offering step-by-step logic corrections and alternative implementations.
+
+### 🧩 VS Code Extension (Node.js Workspace)
+- **Real-Time Static Analysis:** Highlights inefficiencies and hidden bugs directly within the editor.
+- **Automated Fix Generation:** Integrates directly with LLM APIs (Gemini 2.0 Flash) to instantly suggest line-by-line code patches.
+- **Path Resolution:** Specifically analyzes imports/requires and cross-references workspace files to resolve complex pathing issues dynamically.
+- **One-Click Patching:** Review changes through an interactive panel and instantly apply or discard modifications.
+
+---
+
+## 🏗️ Architecture & Core Technologies
+
+BugFixerAI relies on a hybrid pipeline to parse code, detect issues, and generate accurate patches.
+
+### Detection & Analysis
+- **Pylint & Flake8:** Used to perform static analysis, flagging style violations, syntax errors, and missing variables.
+- **AST (Abstract Syntax Tree):** Parses Python logic directly, allowing BugFixerAI to programmatically analyze code logic (e.g., finding unused variables or missing return statements).
+- **Requests & Psycopg2:** Checks for reachable API endpoints and authenticates active database connection strings.
+
+### Repair & Generation
+- **LLM APIs (Gemini / OpenAI / LLaMA):** Based on the identified bug context, the codebase communicates directly with LLMs to generate corrected, drop-in replacement code securely without exposing sensitive comments.
+
+---
+
+## ⚙️ How It Works
+
+### 1. VS Code Extension Pipeline
+The VS Code extension operates directly within your editor to provide real-time, context-aware bug fixing:
+- **Event Listening:** It actively monitors changes in your active text document. Whenever the file is modified or changes size, a new analysis cycle is triggered.
+- **Path Resolution Check:** Before relying on the LLM, the extension uses advanced Regular Expressions to scan for `import` and `require` statements. If a relative path is broken, it traverses the workspace directory tree and programmatically corrects the path string by locating the proper nested component.
+- **LLM Code Analysis:** Once paths are validated, the extension securely sends the raw code to the **Gemini 2.0 Flash API**, explicitly prompting it to fix syntax errors, logical issues, and performance problems while returning pure line-by-line functional code.
+- **Interactive Application:** The suggested fixes are displayed in a side-by-side Webview Panel. Users can instantly "Accept Fixes" (overwriting the editor's text) or undo changes using the built-in version history logger.
+
+### 2. Web Platform & Backend Analytics
+The website offers a standalone environment designed for intensive, multi-phase code diagnostics:
+- **User Interface (Next.js):** Users write and manage code in an embedded multilingual compiler interface integrated via Monaco Editor.
+- **Static Analysis (Python Backend):** The backend receives the raw source code and passes it through intensive inspection modules like **AST** (Abstract Syntax Tree, to extract logic structures programmatically) and **Pylint** (to capture formatting and deep syntax errors).
+- **Environment Checks:** Specialized modules like `requests` and `psycopg2` are used dynamically to check if external APIs are reachable and if database connection strings actually evaluate correctly.
+- **AI Feedback Loop:** The accumulated diagnostic error logs, combined with the buggy code snippets, are packaged and sent to the LLM (LLaMA/OpenAI). The LLM processes the exact execution failure contexts to generate holistic, highly accurate bug fixes which are then returned to the Next.js frontend.
+
+---
+
+## 📂 Project Structure
+
+```text
+BugFixerAI/
+├── extension/          # VS Code Extension Source (Node.js)
+│   ├── extension.js    # Core logic combining AST/Regex pathing and Gemini code fixing
+│   ├── package.json    # Extension manifest and dependencies
+│   └── test/           # Test suites
+├── website/            # Web platform components
+│   ├── backend/        # Python-based backend service
+│   └── bug-fixer/      # Next.js React frontend
+├── docs/               # Detailed project specifications and reports
+└── README.md           # Project documentation
 ```
-📂 docs/                # Documentation and instructions
-📂 extension/           # Extension files
-    📂 test/            # Extension Test Suite
-📂 website/             # Website files
-    📂 backend/         # Website Backend files
-        📂 src/         # Source code files
-        📂 env/         # Environment files
-    📂 bug-fixer/       # Website Frontend files
-        📂 src/         # Source code files
-```
 
 ---
 
-## How to run BugFixerAI
+## 🚀 Getting Started: Replication Manual
 
-- To use BugFixerAI's 
+Follow these comprehensive steps to replicate the BugFixerAI environment on your local machine.
 
-  - Website : Open this [link](https://bugfixerai-t96w.onrender.com)
-    
-  - Extension : Search for BugFixerAI in VS Code Extension Store or [Click here](https://marketplace.visualstudio.com/items/?itemName=BugFixer.BugFixerAI)
+### Prerequisites
+- [Node.js](https://nodejs.org/en/) (v18+)
+- [Python](https://www.python.org/downloads/) (3.10+)
+- [VS Code](https://code.visualstudio.com/)
 
 ---
-## Limitations & Future Scope
 
-### 🚧 Current Limitations
+### Phase 1: Running the VS Code Extension
 
-While BugFixerAI represents a significant step forward in Automated Program Repair (APR), several limitations remain:
+1. **Navigate to the extension directory:**
+   ```bash
+   cd extension
+   ```
 
-1. **Model Generalization**  
-   Our fine-tuned LLM excels on backend patterns included in training data (path errors, DB connections), but may underperform on domain-specific logic or highly specialized APIs.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-2. **Performance Overhead**  
-   Dynamic analysis and GPU-based LLM inference introduce latency. In scenarios requiring rapid iterations, users may experience delays of 2–3 seconds per repair suggestion.
+3. **Configure API Keys:**
+   *Open `extension.js` and verify the `GEMINI_API_KEY` configuration. Ensure your local key is configured either in the code or through environment secrets as per your security needs.*
 
-3. **Dataset Coverage**  
-   The custom buggy dataset, though varied, does not encompass every possible bug category. Dynamic runtime issues—such as race conditions or memory leaks—fall outside the current scope.
+4. **Compile and Execute:**
+   ```bash
+   # If using TypeScript scripts, run:
+   npm run compile
+   
+   # Start the extension in a new VS Code development window:
+   npm run start
+   ```
 
-4. **Security Considerations**  
-   While sandboxing mitigates many risks, executing untrusted code still carries inherent vulnerabilities. We rely on Docker isolation, but kernel exploits or container escapes remain a theoretical threat.
+5. **Using the Extension:**
+   - In the new VS Code window, open any JavaScript or TypeScript project.
+   - Run the command palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and search for **`Activate Analyzer`**.
+   - The Code Analyzer panel will appear over to the side. Any changes to your code will automatically trigger an analysis, resolving paths and fixing bugs.
 
-5. **User Acceptance Bias**  
-   Developers may over-trust LLM suggestions, accepting patches without thorough review. Integrating stricter validation criteria or automated test generation could alleviate this risk.
+---
 
-6. **Integration Complexity**  
-   Although we support popular development environments, introducing a new microservice pipeline may pose onboarding challenges for teams lacking DevOps expertise.
+### Phase 2: Running the Web Platform
 
-### 🔮 Future Work
+#### A. Starting the Next.js Frontend
+1. **Navigate to the web app:**
+   ```bash
+   cd website/bug-fixer
+   ```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+3. **Set up Environment Variables:**
+   Create a `.env` file from the example (if provided) and fill in necessary keys.
+   ```bash
+   # Linux/Mac
+   cp .env.example .env
+   
+   # Windows
+   copy .env.example .env
+   ```
+4. **Launch the development server:**
+   ```bash
+   npm run dev
+   ```
+   *The platform is now accessible at `http://localhost:3000`.*
 
-We envision several exciting directions for future development:
+#### B. Starting the Python Backend
+1. **Navigate to the backend:**
+   ```bash
+   cd website/backend
+   ```
+2. **Setup virtual environment:**
+   ```bash
+   python -m venv env
+   
+   # Activate (Windows)
+   env\\Scripts\\activate
+   
+   # Activate (Mac/Linux)
+   source env/bin/activate
+   ```
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Run the backend:**
+   ```bash
+   python main.py
+   ```
 
-1. **Expanded Bug Coverage**  
-   Incorporate support for security vulnerabilities (e.g., SQL injection), concurrency bugs, and memory management issues.
+*(Note: Provide custom `.env` keys for API databases like PostgreSQL if utilized by the Node/Python bridging apps)*
 
-2. **Automated Test Generation**  
-   Leverage LLMs to synthesize unit tests that validate proposed fixes, reducing manual test writing.
+---
 
-3. **Fine-Grained Performance Optimization**  
-   Explore model quantization (e.g., QLoRA) to reduce inference latency and enable on-premise deployments.
+## 🚧 Limitations & Future Scope
 
-4. **Enhanced Security**  
-   Integrate virtualization (e.g., gVisor, Firecracker) for stronger isolation and explore static verification methods.
+### Current Limitations
+1. **Model Generalization Bias:** The LLM performs exceptionally well on backend patterns (node paths, basic syntax) but may struggle with highly proprietary framework abstractions.
+2. **Performance Latency:** Real-time generation can take 2-3 seconds per file analysis, which may disrupt rapid coding sessions.
+3. **Dataset Coverage:** Very complex, dynamic runtime concurrency issues (like race conditions or deep memory leaks) are currently outside the analysis scope.
+4. **Security Considerations:** While sandboxing mitigates many risks, executing untrusted code still carries inherent vulnerabilities.
+5. **User Acceptance Bias:** Developers may over-trust LLM suggestions, accepting patches without thorough review.
 
-5. **Broader IDE Support**  
-   Develop plugins for IntelliJ, PyCharm, and other popular editors to broaden adoption.
+### Future Work
+1. **Expanded Bug Coverage:** Incorporate support for security vulnerabilities, concurrency bugs, and memory management issues.
+2. **Automated Test Generation:** Leverage LLMs to synthesize unit tests that validate proposed fixes before applying them.
+3. **Fine-Grained Performance Optimization:** Explore model quantization (e.g., QLoRA) to reduce inference latency and enable on-premise deployments securely and efficiently.
+4. **Enhanced Security:** Integrate virtualization (e.g., gVisor, Firecracker) for stronger isolation and safe static verification methods.
+5. **Broader IDE Support:** Develop plugins for IntelliJ, PyCharm, and other popular editors to broaden adoption.
 
-6. **User Feedback Loop**  
-   Collect feedback on repair quality to continually refine the LLM through active learning.
+---
 
-By addressing these areas, BugFixerAI aims to evolve into a comprehensive APR platform capable of handling diverse software ecosystems and fostering greater trust in automated repair technologies.
-
-### Key Achievements
-
-BugFixerAI has already demonstrated the feasibility and advantages of combining static path validation, LLM-driven repair, and sandboxed validation into a unified APR framework. Our hybrid approach addresses common backend bug categories while offering a seamless user experience.
-
-- **Path Correction Module**: Preemptively resolves file reference issues
-- **Dynamic Runtime Repair**: Invokes a custom LLM on every code change to generate contextually relevant fixes
-- **Interactive User Control**: Enables developers to accept, reject, or modify suggested patches
-- **Modular Architecture**: Containerized design supporting multiple programming languages
-
+**BugFixerAI** represents a massive leap forward into the pragmatic integration of LLM tools into day-to-day software engineering cycles. Ready to banish the bugs!
