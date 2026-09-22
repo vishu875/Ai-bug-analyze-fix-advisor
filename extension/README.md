@@ -19,7 +19,7 @@ The primary goal of BugFixerAI is to offer a seamless debugging experience, enab
   Write, execute, and test code in multiple languages directly from the browser with fast, reliable output—ideal for hands-on learning and prototyping.
 
 - **Intelligent Code Analyser:**  
-  Interprets code logic to detect potential issues such as logical errors, bad practices, or edge cases before they become bugs, while explaining the reasons behind these issues.
+  Interprets code logic to detect potential is issues such as logical errors, bad practices, or edge cases before they become bugs, while explaining the reasons behind these issues.
 
 - **Interactive Debugger (LLM-Powered):**  
   Connects to a local LLM-based API, acting as an intelligent code companion that helps users fix bugs and explore alternative implementations.
