@@ -3,7 +3,9 @@
   <h3><i>Automated Program Repair Powered by LLMs</i></h3>
   <br />
   <p>
-    <b>BugFixerAI</b> is an advanced platform designed to detect and fix common backend bugs with minimal manual intervention. By combining rigorous static code analysis with Large Language Models (LLMs), it acts as your intelligent development sidekick—enhancing software reliability by identifying and correcting syntax, configuration, API, and database-related errors on the fly.
+    <b>BugFixerAI</b> is an advanced platform to designed to detect and fix common backend bugs with minimal manual intervention. By combining rigorous static code analysis with Large Language Models (LLMs), it acts as your intelligent development 
+    
+    sidekick—enhancing software reliability by identifying and correcting syntax, configuration, API, and database-related errors on the fly.
   </p>
   <br />
   <p>
