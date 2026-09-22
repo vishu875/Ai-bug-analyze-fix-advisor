@@ -3,7 +3,7 @@
 BugFixerAI is an innovative tool that leverages Large Language Models (LLMs) to identify and fix bugs in code across multiple programming languages. The project consists of two main components:
 
 - **Web-based Interface:**  
-  Provides an interactive environment to compile, analyze, and debug code.  
+  Provides an interactive environment which look intractive to compile, analyze, and debug code.
 - **VSCode Extension:**  
   Automatically detects and repairs runtime bugs (e.g., path errors, segmentation faults, logical flaws) using LLM-based insights.
 
@@ -11,7 +11,7 @@ The primary goal of BugFixerAI is to offer a seamless debugging experience, enab
 
 ---
 
-## Features 
+## Features
 
 ### Website
 
@@ -23,7 +23,6 @@ The primary goal of BugFixerAI is to offer a seamless debugging experience, enab
 
 - **Interactive Debugger (LLM-Powered):**  
   Connects to a local LLM-based API, acting as an intelligent code companion that helps users fix bugs and explore alternative implementations.
-
 
 ### VSCode Extension
 
@@ -54,11 +53,12 @@ The primary goal of BugFixerAI is to offer a seamless debugging experience, enab
 ## How to run BugFixerAI
 
 - Clone the repository
+
 ```
 git clone https://github.com/VasantatiChitraksh/BugFixerAI.git
 ```
-- To run
 
+- To run
   - Website
 
     ```
@@ -66,11 +66,14 @@ git clone https://github.com/VasantatiChitraksh/BugFixerAI.git
     npm install
     npm run dev
     ```
+
   - Extension
 
     ```
     cd .\extension\
     npm install
     ```
+
     Press F5 to run extension
+
 ---
